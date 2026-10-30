@@ -15,11 +15,6 @@ To help out you can:
 
 Run the tests using `pnpm test`
 
-### Format code
+### Lint code
 
-We use [Prettier](https://prettier.io/) (with [a Husky and lint-staged precommit](https://prettier.io/docs/en/precommit.html)) to format your code automatically.
-
-Alternatively, you can:
-
-- trigger the pretty-printing all the files using `pnpm format`
-- use a [Prettier editor integration](https://prettier.io/docs/en/editors.html)
+We use oxlint to lint and format code automatically.

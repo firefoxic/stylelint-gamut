@@ -1,10 +1,10 @@
-import { defineConfig } from "eslint/config";
-import globals from "globals";
-import standard from "eslint-config-standard";
-import prettier from "eslint-config-prettier/flat";
-import importPlugin from "eslint-plugin-import";
-import nPlugin from "eslint-plugin-n";
-import promisePlugin from "eslint-plugin-promise";
+import { defineConfig } from "eslint/config"
+import prettier from "eslint-config-prettier/flat"
+import standard from "eslint-config-standard"
+import importPlugin from "eslint-plugin-import"
+import nPlugin from "eslint-plugin-n"
+import promisePlugin from "eslint-plugin-promise"
+import globals from "globals"
 
 export default defineConfig([
 	{
@@ -12,17 +12,17 @@ export default defineConfig([
 			globals: {
 				...globals.browser,
 				...globals.node,
-				testRule: "readonly",
+				testRule: `readonly`,
 			},
-			ecmaVersion: "latest",
-			sourceType: "module",
+			ecmaVersion: `latest`,
+			sourceType: `module`,
 		},
 		plugins: {
-			import: importPlugin,
-			n: nPlugin,
-			promise: promisePlugin,
+			"import": importPlugin,
+			"n": nPlugin,
+			"promise": promisePlugin,
 		},
 		rules: standard.rules,
 	},
 	prettier,
-]);
+])

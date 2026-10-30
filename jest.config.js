@@ -1,7 +1,7 @@
 export default {
-	preset: "jest-preset-stylelint",
+	preset: `jest-preset-stylelint`,
 	clearMocks: true,
-	setupFiles: ["./jest.setup.js"],
-	testEnvironment: "node",
-	roots: ["src"],
-};
+	setupFiles: [`./jest.setup.js`],
+	testEnvironment: `node`,
+	roots: [`src`],
+}
