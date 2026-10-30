@@ -32,16 +32,15 @@
 	},
 	"devDependencies": {
 		"@firefoxic/oxlint-config": "~0.5",
-		"jest": "^30.4.2",
-		"jest-cli": "^30.4.2",
-		"jest-preset-stylelint": "^9.1.0",
-		"lint-staged": "^17.0.3",
+		"@morev/stylelint-testing-library": "^1",
+		"lint-staged": "^17",
 		"oxlint": "^1",
-		"stylelint": "^17.11.0"
+		"stylelint": "^17",
+		"vitest": "^5"
 	},
 	"scripts": {
 		"lint": "oxlint",
-		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+		"test": "vitest",
 		"prepare": "git config --local core.hooksPath .githooks || true"
 	},
 	"keywords": [
