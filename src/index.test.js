@@ -1,9 +1,17 @@
+import { createTestUtils } from "@morev/stylelint-testing-library"
+import { describe, expect, it } from "vitest"
+
 import plugin, { messages, ruleName } from "./index.js"
 
-testRule({
-	ruleName,
-	config: [true],
+const { createTestRule: createTestRuleFactory } = createTestUtils({
 	plugins: [plugin],
+	testFunctions: { describe, expect, it },
+})
+
+const testRule = createTestRuleFactory({ ruleName })
+
+testRule({
+	config: [true],
 	accept: [
 		{
 			code: `@media (color-gamut:p3) { a { color: lch(48% 82 283); } }`,

@@ -6,9 +6,6 @@ export default defineConfig({
 	"env": {
 		node: true,
 	},
-	"globals": {
-		testRule: `readonly`,
-	},
 	"rules": {
 		"import/exports-last": `off`,
 	},
