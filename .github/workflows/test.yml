@@ -1,29 +1,24 @@
 name: Test
+
 on:
   push:
     branches:
-      - main
+    - main
   pull_request:
+    branches:
+    - '**'
+
 env:
   FORCE_COLOR: 2
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 22
-          - 20
-    name: Node.js ${{ matrix.node-version }}
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-      - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-      - name: Install dependencies
-        run: npm install --ignore-scripts
-      - name: Run tests
-        run: npm test
+          cache: true
+      - run: pnpm ci
+      - run: pnpm lint
+      - run: pnpm test
