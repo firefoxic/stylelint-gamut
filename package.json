@@ -1,6 +1,6 @@
 {
 	"name": "@firefoxic/stylelint-gamut",
-	"version": "0.0.1",
+	"version": "0.1.0-next.0",
 	"description": "Stylelint plugin for working with different color spaces",
 	"license": "MIT",
 	"author": {
@@ -36,9 +36,9 @@
 		"colorjs.io": "^0.7.1"
 	},
 	"devDependencies": {
-		"@types/node": "^26",
 		"@firefoxic/oxlint-config": "~0.5",
 		"@morev/stylelint-testing-library": "^1",
+		"@types/node": "^26",
 		"lint-staged": "^17",
 		"oxlint": "^1",
 		"postcss": "^8",
