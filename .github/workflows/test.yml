@@ -20,5 +20,4 @@ jobs:
         with:
           cache: true
       - run: pnpm ci
-      - run: pnpm lint
-      - run: pnpm test
+      - run: make verify
