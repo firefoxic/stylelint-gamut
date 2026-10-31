@@ -14,11 +14,11 @@ const meta = { url: `https://github.com/fpetrakov/stylelint-gamut/blob/master/sr
 /**
  * Extract supported color and variable function calls from a CSS value.
  *
- * @param {string} value - The CSS value to scan.
- * @returns {string[]} The complete function calls found in the value.
+ * @param value - The CSS value to scan.
+ * @returns The complete function calls found in the value.
  */
-function getFunctionCalls (value) {
-	let matches = []
+function getFunctionCalls (value: string): string[] {
+	let matches: string[] = []
 	let pattern = /(oklch|oklab|lab|lch|var)\s*\(/ugi
 
 	for (let match; (match = pattern.exec(value));) {
@@ -50,10 +50,10 @@ function getFunctionCalls (value) {
 /**
  * Split a string at its first comma outside parentheses.
  *
- * @param {string} value - The string to split.
- * @returns {[string, string]} The content before and after the top-level comma.
+ * @param value - The string to split.
+ * @returns The content before and after the top-level comma.
  */
-function splitAtTopLevelComma (value) {
+function splitAtTopLevelComma (value: string): [string, string] {
 	let depth = 0
 
 	for (let i = 0; i < value.length; i += 1) {
@@ -70,22 +70,26 @@ function splitAtTopLevelComma (value) {
 /**
  * Check whether a value starts with a custom-property `var()` function.
  *
- * @param {string} value - The value to check.
- * @returns {boolean} Whether the value starts with `var(--...)`.
+ * @param value - The value to check.
+ * @returns Whether the value starts with `var(--...)`.
  */
-function startsWithVarFunction (value) {
+function startsWithVarFunction (value: string): boolean {
 	return (/^var\s*\(\s*--/u).test(value)
 }
 
 /**
  * Resolve a custom-property reference or its fallback value.
  *
- * @param {string} value - The value that may contain a custom-property reference.
- * @param {Object<string, {value: string, inQuery: boolean}>} customProperties - Known custom-property values.
- * @param {Set<string>} [seen] - Names already resolved to prevent circular references.
- * @returns {string} The resolved value, or an empty string when it cannot be resolved.
+ * @param value - The value that may contain a custom-property reference.
+ * @param customProperties - Known custom-property values.
+ * @param seen - Names already resolved to prevent circular references.
+ * @returns The resolved value, or an empty string when it cannot be resolved.
  */
-function resolveCustomPropertyValue (value, customProperties, seen = new Set()) {
+function resolveCustomPropertyValue (
+	value: string,
+	customProperties: Record<string, { value: string, inQuery: boolean }>,
+	seen: Set<string> = new Set(),
+): string {
 	if (!startsWithVarFunction(value)) return value
 
 	let inner = value.slice(value.indexOf(`(`) + 1, -1).trim()
@@ -118,17 +122,16 @@ function resolveCustomPropertyValue (value, customProperties, seen = new Set()) 
 /**
  * Create the Stylelint rule visitor for the supplied configuration.
  *
- * @param {unknown} primary - The rule's primary configuration option.
- * @returns {(root: import('postcss').Root, result: import('postcss').Result) => void} The rule visitor.
- * @type {import('stylelint').Rule}
+ * @param primary - The rule's primary configuration option.
+ * @returns The rule visitor.
  */
-function ruleFunction (primary) {
+function ruleFunction (primary: unknown): ReturnType<stylelint.Rule> {
 	return (root, result) => {
 		let validOptions = stylelint.utils.validateOptions(result, ruleName, { actual: primary })
 
 		if (!validOptions) return
 
-		let customProperties = {}
+		let customProperties: Record<string, { value: string, inQuery: boolean }> = {}
 
 		root.walkDecls((decl) => {
 			if (!isStandardSyntaxProperty(decl.prop)) return
@@ -143,10 +146,10 @@ function ruleFunction (primary) {
 			/**
 			 * Report the value if its color is outside the permitted gamut.
 			 *
-			 * @param {string} value - The color function call to check.
-			 * @returns {void}
+			 * @param value - The color function call to check.
+			 * @returns Nothing.
 			 */
-			function check (value) {
+			function check (value: string): void {
 				let shouldBeIgnored = !startsWithVarFunction(value) && ((/var\s*\(\s*--/u).test(value) || !startsWithNumber(value.split(`(`)[1]))
 
 				if (shouldBeIgnored) return
@@ -185,11 +188,9 @@ function ruleFunction (primary) {
 	}
 }
 
-ruleFunction.ruleName = ruleName
-ruleFunction.messages = messages
-ruleFunction.meta = meta
+const rule: stylelint.Rule = Object.assign(ruleFunction, { ruleName, messages, meta })
 
-const plugin = stylelint.createPlugin(ruleName, ruleFunction)
+const plugin = stylelint.createPlugin(ruleName, rule)
 
 export default plugin
 export { messages, meta, ruleName }

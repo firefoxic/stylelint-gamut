@@ -8,13 +8,18 @@
 		"email": "firefoxic.dev@gmail.com"
 	},
 	"type": "module",
-	"main": "src/index.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
 	"lint-staged": {
-		"*.js": "oxlint --fix"
+		"*.ts": "oxlint --fix"
 	},
 	"files": [
-		"src/**/*.js",
-		"!**/**/*.test.js"
+		"dist/**"
 	],
 	"repository": {
 		"type": "git",
@@ -31,16 +36,21 @@
 		"colorjs.io": "^0.6.1"
 	},
 	"devDependencies": {
+		"@types/node": "^26",
 		"@firefoxic/oxlint-config": "~0.5",
 		"@morev/stylelint-testing-library": "^1",
 		"lint-staged": "^17",
 		"oxlint": "^1",
+		"postcss": "^8",
 		"stylelint": "^17",
+		"tsrs": "^0.20.1-ts7",
 		"vitest": "^5"
 	},
 	"scripts": {
 		"lint": "oxlint",
 		"test": "vitest",
+		"typecheck": "tsrs",
+		"build": "rm -rf dist && tsrs -p tsconfig.build.json",
 		"prepare": "git config --local core.hooksPath .githooks || true"
 	},
 	"keywords": [

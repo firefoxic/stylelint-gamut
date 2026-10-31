@@ -11,10 +11,14 @@ To help out you can:
 
 ## Code contributing
 
+### Lint code
+
+We use oxlint to lint and format code automatically.
+
 ### Run tests
 
 Run the tests using `pnpm test`
 
-### Lint code
+### Type-check and build
 
-We use oxlint to lint and format code automatically.
+Run `pnpm typecheck` to check the TypeScript sources and `pnpm build` to generate the package files in `dist/`.
