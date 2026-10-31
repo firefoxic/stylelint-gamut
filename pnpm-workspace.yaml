@@ -1,2 +1,8 @@
-allowBuilds:
-  unrs-resolver: false
+gitChecks: false
+
+minimumReleaseAgeExclude:
+  - '@firefoxic/*'
+  - stylelint
+
+registries:
+  default: https://registry.npmjs.org/
