@@ -46,6 +46,18 @@
 		"tsrs": "^0.20.1-ts7",
 		"vitest": "^5"
 	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "^26.13",
+			"onFail": "download"
+		},
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^12.16",
+			"onFail": "download"
+		}
+	},
 	"scripts": {
 		"lint": "oxlint",
 		"test": "vitest",
