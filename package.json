@@ -59,10 +59,7 @@
 		}
 	},
 	"scripts": {
-		"lint": "oxlint",
-		"test": "vitest",
-		"typecheck": "tsrs",
-		"build": "rm -rf dist && tsrs -p tsconfig.build.json",
+		"help": "make help",
 		"prepare": "git config --local core.hooksPath .githooks || true"
 	},
 	"keywords": [
