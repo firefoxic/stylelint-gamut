@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 
 ## [Unreleased]
 
+## [1.0.0] — 2026–11–03
+
 ### Changed
 
 - A fork of the project <https://github.com/fpetrakov/stylelint-gamut> has been created.
@@ -16,4 +18,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 
 - The `gamut/color-no-out-gamut-range` rule now correctly checks colors in `var()` fallback values, including nested color functions.
 
-[Unreleased]: https://github.com/firefoxic/stylelint-gamut/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/firefoxic/stylelint-gamut/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/firefoxic/stylelint-gamut/compare/v0.0.1...v1.0.0
