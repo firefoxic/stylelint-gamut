@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 ### Changed
 
 - A fork of the project <https://github.com/fpetrakov/stylelint-gamut> has been created.
+- The config now requires `stylelint` version `18.0.0` or higher.
 
 ### Fixed
 
