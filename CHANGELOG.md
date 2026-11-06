@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 
 ## [Unreleased]
 
+### Fixed
+
+- The `gamut/color-no-out-gamut-range` rule no longer crashes on non-color values in `var()` fallbacks.
+
 ## [1.0.0] — 2026–11–03
 
 ### Changed

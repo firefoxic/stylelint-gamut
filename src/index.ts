@@ -160,7 +160,10 @@ function ruleFunction (primary: unknown): ReturnType<stylelint.Rule> {
 				)
 				if (!resolvedValue) return
 
-				let color = new Color(resolvedValue)
+				let color: Color
+
+				try { color = new Color(resolvedValue) }
+				catch { return }
 
 				if (color.inGamut(`srgb`)) return
 				if (color.inGamut(`p3`) && isInColorGamutP3MediaQuery(decl)) return
