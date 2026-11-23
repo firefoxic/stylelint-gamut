@@ -15,9 +15,6 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"lint-staged": {
-		"*.ts": "oxlint --fix"
-	},
 	"files": [
 		"dist/**"
 	],
@@ -39,7 +36,6 @@
 		"@firefoxic/oxlint-config": "~0.5",
 		"@morev/stylelint-testing-library": "^1",
 		"@types/node": "^26",
-		"lint-staged": "^17",
 		"oxlint": "^1",
 		"postcss": "^8",
 		"stylelint": "^18",
