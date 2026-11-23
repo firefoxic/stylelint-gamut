@@ -1,6 +1,6 @@
 {
 	"name": "@firefoxic/stylelint-gamut",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Stylelint plugin for working with different color spaces",
 	"license": "MIT",
 	"author": {

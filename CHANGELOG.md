@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 
 ## [Unreleased]
 
+## [1.0.2] — 2026–11–22
+
 ### Fixed
 
 - The package now provides type declarations correctly.
@@ -28,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and 
 
 - The `gamut/color-no-out-gamut-range` rule now correctly checks colors in `var()` fallback values, including nested color functions.
 
-[Unreleased]: https://github.com/firefoxic/stylelint-gamut/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/firefoxic/stylelint-gamut/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/firefoxic/stylelint-gamut/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/firefoxic/stylelint-gamut/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/firefoxic/stylelint-gamut/compare/v0.0.1...v1.0.0
